@@ -16,14 +16,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/students")
 @RestController
 public class StudentsController {
-
     private static Map<Integer, Student> students = new HashMap<>();
 
     private static AtomicInteger idCounter = new AtomicInteger();
 
     @GetMapping
     public List<Student> getStudents() {
-        return new LinkedList<Student>(students.values());
+        return new LinkedList<>(students.values());
     }
 
     @GetMapping(path = "/{id}")
@@ -40,15 +39,15 @@ public class StudentsController {
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Student> deleteStudent(@PathVariable("id") Integer studentId) {
-        HttpStatus status = students.remove(studentId) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
-        return ResponseEntity.status(status).build();
+        HttpStatus deleteStatus = students.remove(studentId) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+        return ResponseEntity.status(deleteStatus).build();
     }
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<Student> updateStudent(final @PathVariable("id") Integer studentId,
                                                  final @RequestBody Student student) {
         student.setId(studentId);
-        HttpStatus status = students.put(studentId,student) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
-        return ResponseEntity.status(status).build();
+        HttpStatus updateStatus = students.put(studentId, student) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+        return ResponseEntity.status(updateStatus).build();
     }
 }
