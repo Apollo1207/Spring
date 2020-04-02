@@ -14,7 +14,6 @@ public class Student {
     private Integer id;
 
     public Student() {
-
     }
 
     public Student(String firstStudent, String secondStudent) {
