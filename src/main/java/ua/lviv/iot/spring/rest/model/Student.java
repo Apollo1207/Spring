@@ -1,8 +1,9 @@
-package ua.lviv.iot.spring.demo.model;
+package ua.lviv.iot.spring.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Student {
@@ -16,10 +17,6 @@ public class Student {
     @JoinColumn(name = "group_id")
     @JsonIgnoreProperties("students")
     private Group group;
-
-
-
-
 
     public Student() {
     }
@@ -59,5 +56,31 @@ public class Student {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return getFirstStudent().equals(student.getFirstStudent()) &&
+                getSecondStudent().equals(student.getSecondStudent()) &&
+                getId().equals(student.getId()) &&
+                getGroup().equals(student.getGroup());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstStudent(), getSecondStudent(), getId(), getGroup());
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "firstStudent='" + firstStudent + '\'' +
+                ", secondStudent='" + secondStudent + '\'' +
+                ", id=" + id +
+                ", group=" + group +
+                '}';
     }
 }

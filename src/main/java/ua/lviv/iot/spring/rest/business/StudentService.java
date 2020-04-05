@@ -1,9 +1,9 @@
-package ua.lviv.iot.spring.demo.business;
+package ua.lviv.iot.spring.rest.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.lviv.iot.spring.demo.dataaccess.StudentRepository;
-import ua.lviv.iot.spring.demo.model.Student;
+import ua.lviv.iot.spring.rest.dataaccess.StudentRepository;
+import ua.lviv.iot.spring.rest.model.Student;
 
 import java.util.List;
 

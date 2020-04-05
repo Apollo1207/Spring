@@ -1,12 +1,12 @@
-package ua.lviv.iot.spring.demo.controller;
+package ua.lviv.iot.spring.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.lviv.iot.spring.demo.business.StudentService;
-import ua.lviv.iot.spring.demo.model.Student;
+import ua.lviv.iot.spring.rest.business.StudentService;
+import ua.lviv.iot.spring.rest.model.Student;
 
 import java.util.List;
 
