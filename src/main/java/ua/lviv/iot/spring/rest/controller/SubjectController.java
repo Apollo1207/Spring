@@ -1,10 +1,10 @@
 package ua.lviv.iot.spring.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import ua.lviv.iot.spring.rest.business.SubjectService;
+import ua.lviv.iot.spring.rest.model.Student;
 import ua.lviv.iot.spring.rest.model.Subject;
 
 import java.util.List;
@@ -19,5 +19,10 @@ public class SubjectController {
     @GetMapping
     public List<Subject> getSubjects() {
         return subjectService.getSubjects();
+    }
+
+    @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    public final Subject createSubject(final @RequestBody Subject subject) {
+        return subjectService.createSubject(subject);
     }
 }
