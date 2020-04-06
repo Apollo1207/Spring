@@ -8,7 +8,7 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>ua.lviv.iot.spring</groupId>
+    <groupId>ua.lviv.iot.spring.rest</groupId>
     <artifactId>rest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>rest</name>
