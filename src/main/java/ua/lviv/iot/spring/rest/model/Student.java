@@ -3,9 +3,11 @@ package ua.lviv.iot.spring.rest.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@NamedNativeQuery(name = "Student.findBestStudent",
+        query = "select * from student where id = 1")
 public class Student {
     private String firstStudent;
     private String secondStudent;
@@ -17,6 +19,10 @@ public class Student {
     @JoinColumn(name = "group_id")
     @JsonIgnoreProperties("students")
     private Group group;
+
+    @ManyToMany(mappedBy = "students")
+    @JsonIgnoreProperties("students")
+    private Set<Subject> subjects;
 
     public Student() {
     }
@@ -58,29 +64,11 @@ public class Student {
         this.group = group;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return getFirstStudent().equals(student.getFirstStudent()) &&
-                getSecondStudent().equals(student.getSecondStudent()) &&
-                getId().equals(student.getId()) &&
-                getGroup().equals(student.getGroup());
+    public Set<Subject> getSubjects() {
+        return subjects;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getFirstStudent(), getSecondStudent(), getId(), getGroup());
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "firstStudent='" + firstStudent + '\'' +
-                ", secondStudent='" + secondStudent + '\'' +
-                ", id=" + id +
-                ", group=" + group +
-                '}';
+    public void setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
     }
 }

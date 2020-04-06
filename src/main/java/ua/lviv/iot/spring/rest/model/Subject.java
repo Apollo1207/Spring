@@ -3,24 +3,26 @@ package ua.lviv.iot.spring.rest.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "\"group\"")
-public class Group {
+public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
-    private Integer enrollmentYear;
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("group")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Student_Subjects", joinColumns = {
+            @JoinColumn(name = "subject_id", nullable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "student_id", nullable = false)})
+    @JsonIgnoreProperties("subjects")
     private Set<Student> students;
 
-    public Group() {
+    public Subject() {
+
     }
 
     public Integer getId() {
@@ -39,14 +41,6 @@ public class Group {
         this.name = name;
     }
 
-    public Integer getEnrollmentYear() {
-        return enrollmentYear;
-    }
-
-    public void setEnrollmentYear(Integer enrollmentYear) {
-        this.enrollmentYear = enrollmentYear;
-    }
-
     public Set<Student> getStudents() {
         return students;
     }
@@ -54,5 +48,4 @@ public class Group {
     public void setStudents(Set<Student> students) {
         this.students = students;
     }
-
 }

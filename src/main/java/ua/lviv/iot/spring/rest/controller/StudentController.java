@@ -18,8 +18,11 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping
-    public final List<Student> getStudents() {
-        return studentService.getStudents();
+    public final List<Student> getStudents(final @RequestParam(value = "firstStudent", required = false) String firstStudent) {
+        if (firstStudent == null) {
+            return studentService.getStudents();
+        }
+        return studentService.getAllByFirstStudent(firstStudent);
     }
 
     @GetMapping(path = "/{id}")

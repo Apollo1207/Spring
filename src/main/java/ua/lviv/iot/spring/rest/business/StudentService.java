@@ -48,4 +48,7 @@ public class StudentService {
         }
     }
 
+    public List<Student> getAllByFirstStudent(String firstStudent) {
+        return studentRepository.findAllByFirstStudent(firstStudent);
+    }
 }
