@@ -16,4 +16,35 @@ public class GroupService {
     public List<Group> getGroups() {
         return groupRepository.findAll();
     }
+
+    public Group getGroup(Integer id) {
+        if (groupRepository.existsById(id)) {
+            return groupRepository.findById(id).get();
+        } else {
+            return null;
+        }
+    }
+
+    public Group createGroup(Group group) {
+        return groupRepository.save(group);
+    }
+
+    public boolean deleteGroup(Integer id) {
+        if (groupRepository.existsById(id)) {
+            groupRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Group updateGroup(Integer id, Group group) {
+        if (groupRepository.existsById(id)) {
+            Group previousGroup = groupRepository.findById(id).get();
+            groupRepository.save(group);
+            return previousGroup;
+        } else {
+            return null;
+        }
+    }
 }

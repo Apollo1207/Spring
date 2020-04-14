@@ -10,8 +10,4 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Integer> {
     List<Student> findAllByFirstStudent(String firstStudent);
 
-    List<Student> findAllByFirstStudentAndSecondStudent(String firstStudent, String secondStudent);
-
-    Student findBestStudent();
-
 }
