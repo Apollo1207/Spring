@@ -1,6 +1,6 @@
-/*mvn*/
-/*target*/
-/*idea*/
+.mvn/
+target/
+.idea/
 mvnw
 mvnw.cmd
 rest.iml
