@@ -48,7 +48,6 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.4.12.Final</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -100,8 +99,6 @@
                 </configuration>
             </plugin>
             <plugin>
-
-
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <version>1.5.8</version>
